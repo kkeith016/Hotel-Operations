@@ -33,7 +33,7 @@ public class Reservation {
 
         // Apply weekend increase
         if (isWeekend) {
-            this.pricePerNight *= 1.10;
+            this.pricePerNight = this.pricePerNight * 1.10;
         }
     }
 
