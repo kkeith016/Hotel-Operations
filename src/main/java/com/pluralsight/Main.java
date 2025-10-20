@@ -9,14 +9,18 @@ public class Main {
 
         //test res
         Reservation reservation = new Reservation("King", 3, true);
-        System.out.println("Reservation total: $" + reservation.getReservationTotal());
+        System.out.printf("Reservation total: $%.2f%n", reservation.getReservationTotal());
         System.out.println();
 
         //test employee
         Employees employees = new Employees(101, "John Doe","Housekeeping",17, 49);
         System.out.println("Employee: " + employees.getFullName());
-        System.out.printf("Total Pay: $" + employees.getTotalPay()+"\n Reg Hours:" + employees.getRegularHoursWorked() +"\n Overtime:" + employees.getOvertimeHours());
-        System.out.println();
+        System.out.printf(
+                "Total Pay: $%.2f%nReg Hours: %.2f%nOvertime: %.2f%n",
+                employees.getTotalPay(),
+                employees.getRegularHoursWorked(),
+                employees.getOvertimeHours());
+                System.out.println();
 
 
 

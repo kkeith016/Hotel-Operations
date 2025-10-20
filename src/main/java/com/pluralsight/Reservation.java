@@ -19,7 +19,6 @@ public class Reservation {
     public void setRoomType(String roomType) {
         this.roomType = roomType.toUpperCase();
 
-        // Set base price
         switch (this.roomType) {
             case "KING":
                 this.pricePerNight = 139.0;
