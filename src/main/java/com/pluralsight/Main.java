@@ -43,9 +43,12 @@ public class Main {
                 emp.getTotalPay(),
                 emp.getRegularHoursWorked(),
                 emp.getOvertimeHours());
+        System.out.println("----------------------------------");
 
-    }
+        //testing Hotel Class
+        Hotel hotel = new Hotel("Sunset Inn", 5, 10); // name, suites, basic rooms
 
-            //testing Hotel Class
 
+
+}
 }
