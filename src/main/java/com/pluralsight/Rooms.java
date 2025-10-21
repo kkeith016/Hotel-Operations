@@ -49,7 +49,7 @@ public class Rooms {
     }
     public void checkIn() {
         if (isAvailable()) {
-            occupied = false;
+            occupied = true;
             dirty = true;
             System.out.println("Guest has been checked in.");
         } else {
