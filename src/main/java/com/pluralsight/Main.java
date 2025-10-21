@@ -48,7 +48,19 @@ public class Main {
         //testing Hotel Class
         Hotel hotel = new Hotel("Sunset Inn", 5, 10); // name, suites, basic rooms
 
+        System.out.println(">>> Hotel Created: " + hotel.getName());
+        System.out.println("Available Suites: " + hotel.getAvailableSuites());
+        System.out.println("Available Basic Rooms: " + hotel.getAvailableRooms());
+        System.out.println("----------------------------------");
 
+        hotel.bookRoom(2, true);   // Book 2 suites
+        hotel.bookRoom(3, false);  // Book 3 basic rooms
+        hotel.bookRoom(10, true);  // Try to overbook suites
+
+        System.out.println("----------------------------------");
+        System.out.println("Suites left: " + hotel.getAvailableSuites());
+        System.out.println("Basic rooms left: " + hotel.getAvailableRooms());
+        System.out.println("==================================");
 
 }
 }
