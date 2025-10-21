@@ -56,6 +56,25 @@ public class Employees {
         double overtimePay = getOvertimeHours() * payRate * 1.5;
         return regularPay + overtimePay;
     }
+    public void punchIn(double time) {
+        if (startingTime == 0) { // only punch in if not already working
+            startingTime = time;
+            System.out.println(fullName + " punched in at " + time);
+        } else {
+            System.out.println(fullName + " is already punched in!");
+        }
+    }
+
+    public void punchOut(double time) {
+        if (startingTime != 0) { // only punch out if they punched in first
+            double worked = time - startingTime;
+            hoursWorked += worked;
+            System.out.println(fullName + " punched out at " + time + " and worked " + worked + " hours.");
+            startingTime = 0; // reset for next shift
+        } else {
+            System.out.println(fullName + " hasn't punched in yet!");
+        }
+    }
 }
 
 
