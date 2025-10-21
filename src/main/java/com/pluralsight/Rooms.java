@@ -48,8 +48,8 @@ public class Rooms {
         return !occupied && !dirty;
     }
     public void checkIn() {
-        if (isAvailable()) {   // <-- use isAvailable(), not isOccupied()
-            occupied = true;
+        if (isAvailable()) {
+            occupied = false;
             dirty = true;
             System.out.println("Guest has been checked in.");
         } else {
@@ -58,7 +58,7 @@ public class Rooms {
     }
     public void checkOut() {
         if (occupied) {
-            occupied = false;
+            occupied = true;
             dirty = true;
             System.out.println("Guest checked out. Room needs cleaning.");
         } else {
