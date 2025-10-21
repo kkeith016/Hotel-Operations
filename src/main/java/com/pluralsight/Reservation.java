@@ -17,7 +17,7 @@ public class Reservation {
     }
 
     public void setRoomType(String roomType) {
-        this.roomType = roomType.toUpperCase();
+        this.roomType = roomType.toUpperCase().trim();
 
         switch (this.roomType) {
             case "KING":
