@@ -7,16 +7,15 @@ public class Main {
 
         System.out.println(">>> Initial Room Availability <<<");
         System.out.println("Room available? " + room.isAvailable());
+
         System.out.println("----------------------------------");
 
         System.out.println(">>> Guest Checks In <<<");
         room.checkIn();
-        System.out.println("Room available? " + room.isAvailable());
         System.out.println("----------------------------------");
 
         System.out.println(">>> Guest Checks Out <<<");
         room.checkOut();
-        System.out.println("Room available? " + room.isAvailable());
         System.out.println("----------------------------------");
 
         System.out.println(">>> Housekeeping Cleans Room <<<");
