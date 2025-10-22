@@ -20,14 +20,7 @@ public class Hotel {
         this.bookedSuites = bookedSuites;
     }
 
-    /**
-     * The bookRoom method should determine if there are enough rooms available
-     * and update the booked inventory if they are. The method should return
-     * true/false based on whether the rooms were able to be booked
-     * @param numberOfRooms
-     * @param isSuite
-     * @return
-     */
+
     public boolean bookRoom(int numberOfRooms, boolean isSuite) {
         if (isSuite) {
             if (getAvailableSuites() >= numberOfRooms) {
