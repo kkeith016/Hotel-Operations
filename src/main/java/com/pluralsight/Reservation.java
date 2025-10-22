@@ -1,15 +1,26 @@
 package com.pluralsight;
 
 public class Reservation {
-    private String roomType; // KING or DOUBLE
+    private String roomType;
+    private double price;
     private int numberOfNights;
-    private double pricePerNight;
     private boolean isWeekend;
 
     public Reservation(String roomType, int numberOfNights, boolean isWeekend) {
+        this.roomType = roomType.trim(); //Either "King" or "Double"
+
+        if (roomType.toLowerCase().equals("king")) {
+            this.price = 139.00;
+        } else {
+            this.price = 124.00;
+        }
+
         this.numberOfNights = numberOfNights;
         this.isWeekend = isWeekend;
-        setRoomType(roomType); // automatically sets pricePerNight
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     public String getRoomType() {
@@ -17,23 +28,12 @@ public class Reservation {
     }
 
     public void setRoomType(String roomType) {
-        this.roomType = roomType.toUpperCase().trim();
+        this.roomType = roomType;
 
-        switch (this.roomType) {
-            case "KING":
-                this.pricePerNight = 139.0;
-                break;
-            case "DOUBLE":
-                this.pricePerNight = 124.0;
-                break;
-            default:
-                System.out.println("Error: Invalid room type.");
-                this.pricePerNight = 0;
-        }
-
-        // Apply weekend increase
-        if (isWeekend) {
-            this.pricePerNight = this.pricePerNight * 1.10;
+        if (roomType.toLowerCase().equals("king")) {
+            this.price = 139.00;
+        } else  {
+            this.price = 124.00;
         }
     }
 
@@ -45,20 +45,21 @@ public class Reservation {
         this.numberOfNights = numberOfNights;
     }
 
-    public double getPricePerNight() {
-        return pricePerNight;
-    }
-
     public boolean isWeekend() {
         return isWeekend;
     }
 
-    public void setWeekend(boolean isWeekend) {
-        this.isWeekend = isWeekend;
-        setRoomType(this.roomType); // recalc price if weekend status changes
+    public void setWeekend(boolean weekend) {
+        isWeekend = weekend;
     }
 
     public double getReservationTotal() {
-        return pricePerNight * numberOfNights;
+        double upCharge = this.price; //upCharge stays the same when it's not a weekend reservation
+
+        if (this.isWeekend) {
+            upCharge *= 1.1;
+        }
+
+        return this.numberOfNights * upCharge;
     }
 }

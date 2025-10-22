@@ -1,78 +1,54 @@
 package com.pluralsight;
 
 public class Hotel {
+    private int numberOfSuites, numberOfRooms, bookedSuites, bookedBasicRooms;
     private String name;
-    private int numberOfSuites;
-    private int numberOfRooms;
-    private int bookedSuites;
-    private int bookedBasicRooms;
 
-    public Hotel(String name, int numberOfSuites, int numberOfRooms) {
+    Hotel(String name, int numberOfSuites, int numberOfRooms) {
         this.name = name;
         this.numberOfSuites = numberOfSuites;
         this.numberOfRooms = numberOfRooms;
-        this.bookedSuites = 0;
         this.bookedBasicRooms = 0;
+        this.bookedSuites = 0;
     }
 
-    public Hotel(String name, int numberOfSuites, int numberOfRooms, int bookedSuites, int bookedBasicRooms) {
+    Hotel(String name, int numberOfSuites, int numberOfRooms, int bookedSuites, int bookedBasicRooms) {
         this.name = name;
         this.numberOfSuites = numberOfSuites;
         this.numberOfRooms = numberOfRooms;
-        this.bookedSuites = bookedSuites;
         this.bookedBasicRooms = bookedBasicRooms;
+        this.bookedSuites = bookedSuites;
     }
 
-    public boolean bookRoom(int numberOfRoomsToBook, boolean isSuite) {
+    /**
+     * The bookRoom method should determine if there are enough rooms available
+     * and update the booked inventory if they are. The method should return
+     * true/false based on whether the rooms were able to be booked
+     * @param numberOfRooms
+     * @param isSuite
+     * @return
+     */
+    public boolean bookRoom(int numberOfRooms, boolean isSuite) {
         if (isSuite) {
-            if (bookedSuites + numberOfRoomsToBook <= numberOfSuites) {
-                bookedSuites = bookedSuites + numberOfRoomsToBook;
-                System.out.println(numberOfRoomsToBook + " suite(s) successfully booked.");
+            if (getAvailableSuites() >= numberOfRooms) {
+                this.bookedSuites += numberOfRooms;
                 return true;
-            } else {
-                System.out.println("Not enough suites available to book " + numberOfRoomsToBook + ".");
-                return false;
             }
         } else {
-            if (bookedBasicRooms + numberOfRoomsToBook <= numberOfRooms) {
-                bookedBasicRooms = bookedBasicRooms + numberOfRoomsToBook;
-                System.out.println(numberOfRoomsToBook + " basic room(s) successfully booked.");
+            if (getAvailableRooms() >= numberOfRooms) {
+                this.bookedBasicRooms += numberOfRooms;
                 return true;
-            } else {
-                System.out.println("Not enough basic rooms available to book " + numberOfRoomsToBook + ".");
-                return false;
             }
         }
+        return false;
+    }
+
+    public int getAvailableRooms() {
+        return this.numberOfRooms - this.bookedBasicRooms;
     }
 
     public int getAvailableSuites() {
-        return numberOfSuites - bookedSuites;
+        return this.numberOfSuites - this.bookedSuites;
     }
 
-    // Get available basic rooms
-    public int getAvailableRooms() {
-        return numberOfRooms - bookedBasicRooms;
-    }
-
-    // Getters
-    public String getName() {
-        return name;
-    }
-
-    public int getNumberOfSuites() {
-        return numberOfSuites;
-    }
-
-    public int getNumberOfRooms() {
-        return numberOfRooms;
-    }
-
-    public int getBookedSuites() {
-        return bookedSuites;
-    }
-
-    public int getBookedBasicRooms() {
-        return bookedBasicRooms;
-    }
 }
-
